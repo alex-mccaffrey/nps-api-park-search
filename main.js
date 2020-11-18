@@ -31,11 +31,11 @@ function displayResults(responseJson) {
   $('#results').removeClass('hidden');
 };
 
-function getParks(state, maxResults=10) {
+function getParks(state, limit) {
   const params = {
     stateCode: state,
     api_key: apiKey,
-    maxResults,
+    limit,
   };
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
@@ -59,8 +59,8 @@ function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     const state = $('#js-state').val();
-    const maxResults = $('#js-max-results').val();
-    getParks(state, maxResults);
+    const limit = $('#js-limit-results').val();
+    getParks(state, limit);
   });
 }
 
